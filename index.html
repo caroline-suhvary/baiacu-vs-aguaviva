@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baiacu vs Água-Viva — Jogo em JavaScript puro</title>
+  <meta name="description" content="Jogo 2D desenvolvido com HTML5 Canvas, CSS3 responsivo e JavaScript puro (vanilla JS). Projeto de portfólio de Caroline Rocha." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="game-header">
+      <h1>🐡 Baiacu <span>vs</span> Água-Viva 🪼</h1>
+      <p class="subtitle">Atire veneno nas águas-vivas antes que elas encostem em você!</p>
+    </header>
+
+    <section class="hud" aria-label="Placar">
+      <div class="hud-item">Pontos: <strong id="score">0</strong></div>
+      <div class="hud-item">Vidas: <strong id="lives">❤️❤️❤️</strong></div>
+      <div class="hud-item">Recorde: <strong id="highscore">0</strong></div>
+    </section>
+
+    <div class="canvas-wrap">
+      <canvas id="game" width="800" height="500" aria-label="Área do jogo"></canvas>
+
+      <div id="overlay" class="overlay">
+        <h2 id="overlay-title">Baiacu vs Água-Viva</h2>
+        <p id="overlay-text">
+          Use <kbd>W</kbd>/<kbd>S</kbd> ou as setas <kbd>↑</kbd>/<kbd>↓</kbd> para nadar e
+          <kbd>Espaço</kbd> para atirar veneno.<br />
+          No celular, toque nos botões abaixo do mar.
+        </p>
+        <button id="start-btn" type="button">▶ Começar</button>
+      </div>
+    </div>
+
+    <nav class="touch-controls" aria-label="Controles de toque">
+      <button id="btn-up" type="button" aria-label="Subir">⬆️</button>
+      <button id="btn-shoot" type="button" aria-label="Atirar veneno">💥</button>
+      <button id="btn-down" type="button" aria-label="Descer">⬇️</button>
+    </nav>
+
+    <footer class="game-footer">
+      <p>Feito com HTML5 Canvas + CSS3 + JavaScript puro · <a href="https://github.com/" target="_blank" rel="noopener">Portfólio da Caroline</a></p>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
