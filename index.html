@@ -1,50 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Baiacu vs Água-Viva — Jogo em JavaScript puro</title>
-  <meta name="description" content="Jogo 2D desenvolvido com HTML5 Canvas, CSS3 responsivo e JavaScript puro (vanilla JS). Projeto de portfólio de Caroline Rocha." />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <main class="game-shell">
-    <header class="game-header">
-      <h1>🐡 Baiacu <span>vs</span> Água-Viva 🪼</h1>
-      <p class="subtitle">Atire veneno nas águas-vivas antes que elas encostem em você!</p>
-    </header>
-
-    <section class="hud" aria-label="Placar">
-      <div class="hud-item">Pontos: <strong id="score">0</strong></div>
-      <div class="hud-item">Vidas: <strong id="lives">❤️❤️❤️</strong></div>
-      <div class="hud-item">Recorde: <strong id="highscore">0</strong></div>
-    </section>
-
-    <div class="canvas-wrap">
-      <canvas id="game" width="800" height="500" aria-label="Área do jogo"></canvas>
-
-      <div id="overlay" class="overlay">
-        <h2 id="overlay-title">Baiacu vs Água-Viva</h2>
-        <p id="overlay-text">
-          Use <kbd>W</kbd>/<kbd>S</kbd> ou as setas <kbd>↑</kbd>/<kbd>↓</kbd> para nadar e
-          <kbd>Espaço</kbd> para atirar veneno.<br />
-          No celular, toque nos botões abaixo do mar.
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Baiacu vs Águas-vivas — Jogo em JavaScript puro</title>
+    <meta
+      name="description"
+      content="Ajude o Baiacu a vencer 100 Aguas-vivas em dez fases e encontrar o tesouro do navio pirata naufragado." />
+    <meta property="og:title" content="Baiacu vs Aguas-vivas" />
+    <meta
+      property="og:description"
+      content="Dez fases, Aguas-vivas, vidas em caranguejos e um tesouro pirata." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="game-header">
+        <p class="eyebrow">MISSÃO SUBMARINA</p>
+        <h1>Baiacu vs Águas-vivas</h1>
+        <p class="subtitle">
+          Derrote 100 Águas-vivas e encontre o tesouro perdido.
         </p>
-        <button id="start-btn" type="button">▶ Começar</button>
+      </header>
+
+      <section class="status-panel" aria-label="Status do jogo">
+        <div class="main-stats">
+          <div class="stat">
+            <span>FASE</span><strong id="phase">1 / 10</strong>
+          </div>
+          <div class="stat">
+            <span>ELIMINADAS</span><strong id="killed">0 / 100</strong>
+          </div>
+          <div class="stat">
+            <span>ESCAPARAM</span><strong id="escaped">0</strong>
+          </div>
+          <div class="stat">
+            <span>RECORDE</span><strong id="highscore">0</strong>
+          </div>
+        </div>
+        <div class="progress-track" aria-label="Progresso até o tesouro">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <div class="lives-row">
+          <span>VIDAS</span>
+          <div id="lives" class="crab-lives" aria-label="3 vidas"></div>
+        </div>
+      </section>
+
+      <div class="canvas-wrap">
+        <canvas
+          id="game"
+          width="960"
+          height="540"
+          aria-label="Área do jogo Baiacu vs Aguas-vivas"></canvas>
+        <div
+          id="announcement"
+          class="announcement hidden"
+          aria-live="polite"></div>
+        <div id="overlay" class="overlay">
+          <div class="overlay-emblem" aria-hidden="true">🐡</div>
+          <h2 id="overlay-title">A missão começa agora</h2>
+          <p id="overlay-text">
+            Cada água-viva precisa de <strong>2 acertos</strong>.<br />
+            Use <kbd>W</kbd>/<kbd>S</kbd> ou <kbd>↑</kbd>/<kbd>↓</kbd> para
+            nadar e <kbd>Espaço</kbd> para atirar.
+          </p>
+          <button id="start-btn" type="button">Começar missão</button>
+        </div>
       </div>
-    </div>
 
-    <nav class="touch-controls" aria-label="Controles de toque">
-      <button id="btn-up" type="button" aria-label="Subir">⬆️</button>
-      <button id="btn-shoot" type="button" aria-label="Atirar veneno">💥</button>
-      <button id="btn-down" type="button" aria-label="Descer">⬇️</button>
-    </nav>
+      <nav class="touch-controls" aria-label="Controles de toque">
+        <button id="btn-up" type="button" aria-label="Subir">↑</button>
+        <button
+          id="btn-shoot"
+          class="shoot"
+          type="button"
+          aria-label="Atirar veneno">
+          ●
+        </button>
+        <button id="btn-down" type="button" aria-label="Descer">↓</button>
+      </nav>
 
-    <footer class="game-footer">
-      <p>Feito com HTML5 Canvas + CSS3 + JavaScript puro · <a href="https://github.com/" target="_blank" rel="noopener">Portfólio da Caroline</a></p>
-    </footer>
-  </main>
-
-  <script src="game.js"></script>
-</body>
+      <footer class="game-footer">
+        <span>HTML5 Canvas</span><span>CSS responsivo</span
+        ><span>JavaScript puro</span>
+      </footer>
+    </main>
+    <script src="game.js"></script>
+  </body>
 </html>
